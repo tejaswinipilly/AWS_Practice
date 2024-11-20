@@ -1,0 +1,42 @@
+html
+     <!DOCTYPE html>
+     <html>
+     <head>
+         <title>Real-Time Notes</title>
+     </head>
+     <body>
+         <h1>Notes</h1>
+         <div id="notes"></div>
+         <textarea id="note" placeholder="Write a note..."></textarea>
+         <button id="save">Save Note</button>
+
+         <script>
+             const notesDiv = document.getElementById('notes');
+             const noteInput = document.getElementById('note');
+
+             function loadNotes() {
+                 fetch('/notes')
+                     .then(response => response.text())
+                     .then(data => {
+                         notesDiv.textContent = data;
+                     });
+             }
+
+             document.getElementById('save').onclick = function() {
+                 const note = noteInput.value;
+                 fetch('/notes', {
+                     method: 'POST',
+                     headers: {
+                         'Content-Type': 'application/json'
+                     },
+                     body: JSON.stringify({ note })
+                 }).then(() => {
+                     noteInput.value = '';
+                     loadNotes();
+                 });
+             };
+
+             loadNotes(); // Load notes on page load
+         </script>
+     </body>
+     </html>
