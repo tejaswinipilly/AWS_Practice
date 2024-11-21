@@ -105,12 +105,4 @@ Step 6: Create a Custom AMI
 
 3.Launch New Instances from Your AMI:
    - You can now launch new EC2 instances using this custom AMI, which includes your pre-configured Flask application.
-   ![vpc](../images)
-
-Step 7: Cleanup
-
-1. **Terminate the EC2 Instance:**
-   - After verifying everything, make sure to terminate your instance to avoid charges.
-
-2. **Delete the AMI (if necessary):**
-   - Go to the AMIs section in the EC2 console and delete the AMI if you no longer need it.
+   
