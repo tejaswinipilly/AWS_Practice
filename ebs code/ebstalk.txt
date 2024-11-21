@@ -1,0 +1,49 @@
+2024-11-20 10:54:14    ERROR   Creating Auto Scaling launch configuration failed Reason: Resource handler returned message: "The Launch Configuration creation operation is not available in your account. Use launch templates to create configuration templates for your Auto Scaling groups. (Service: AutoScaling, Status Code: 400, Request ID: 486ad123-3ca2-4619-97a2-8fe6e7def696)" (RequestToken: 65898546-52d6-d31b-2964-a54d690d677b, HandlerErrorCode: GeneralServiceException)
+
+2024-11-20 10:57:03    ERROR   Stack named 'awseb-e-yj2s6ka4im-stack' aborted operation. Current state: 'CREATE_FAILED'  Reason: The following resource(s) failed to create: [AWSEBAutoScalingLaunchConfiguration].
+
+2024-11-20 10:57:05    ERROR   Service:AmazonCloudFormation, Message:Resource AWSEBAutoScalingGroup does not exist for stack awseb-e-yj2s6ka4im-stack
+
+aws elasticbeanstalk create-environment --application-name note-app --environment-name note-appli-envi --solution-stack-name"64bit Amazon Linux 2 v3.4.11 running Node.js 14" --instance-profile vpc-instance --option-settings Namespace=aws:autoscaling:launchconfiguration,OptionName=RootVolumeType,Value=gp2
+
+aws elasticbeanstalk create-environment --application-name note-app-env1 --environment-name note-application-environments --solution-stack-name "64bit Amazon Linux 2 v5.0.2 running Node.js 12" --instance-profile vpc-instance --option-settings Namespace=aws:autoscaling:launchconfiguration,OptionName=RootVolumeType,Value=gp2
+
+
+
+aws elasticbeanstalk update-environment --environment-name node-app --instance-profile vpc-instance
+
+
+
+aws elasticbeanstalk create-environment --application-name note-app --environment-name note-application-env --solution-stack-name "64bit Amazon Linux 2 v5.0.2 running Node.js 12" --option-settings Namespace=aws:autoscaling:launchconfiguration,OptionName=InstanceProfile,Value=beanstalkinstance --option-settings Namespace=aws:autoscaling:launchconfiguration,OptionName=RootVolumeType,Value=gp2
+
+aws elasticbeanstalk create-environment --application-name note-app --environment-name note-ap-en --solution-stack-name "64bit Amazon Linux 2 v5.0.2 running Node.js 12" --instance-profile beanstalkinstance --option-settings Namespace=aws:autoscaling:launchconfiguration,OptionName=RootVolumeType,Value=gp2
+
+aws elasticbeanstalk create-environment --application-name note-app --environment-name note-applica-enviro --solution-stack-name "64bit Amazon Linux 2 v5.0.2 running Node.js 12" --instance-profile beanstalkinstance --option-settings Namespace=aws:autoscaling:launchconfiguration,OptionName=RootVolumeType,Value=gp2
+
+aws elasticbeanstalk create-environment \
+  --application-name note-app \
+  --environment-name note-applica-enviro \
+  --solution-stack-name "64bit Amazon Linux 2 v5.0.2 running Node.js 12" \
+  --instance-profile elasticbeanstalk-instance-profile \
+  --option-settings Namespace=aws:autoscaling:launchconfiguration,OptionName=RootVolumeType,Value=gp2
+
+aws elasticbeanstalk create-environment \
+  --application-name note-app \
+  --environment-name note-applica-enviro \
+  --solution-stack-name "64bit Amazon Linux 2 v5.0.2 running Node.js 12" \
+  --option-settings Namespace=aws:autoscaling:launchconfiguration,OptionName=RootVolumeType,Value=gp2 \
+  --option-settings Namespace=aws:autoscaling:launchconfiguration,OptionName=IamInstanceProfile,Value=arn:aws:iam::<aws-account-id>:instance-profile/beanstalkinstance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
