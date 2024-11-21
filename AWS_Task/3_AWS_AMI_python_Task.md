@@ -6,6 +6,7 @@ Log in to the AWS Management Console and navigate to the EC2 dashboard.
    - Select an instance type (t2.micro
    ).
    - Click "Next: Configure Instance Details."
+   
    ![alt text](image-3.png)
 
 3.Configure Instance Details:
@@ -15,11 +16,13 @@ Log in to the AWS Management Console and navigate to the EC2 dashboard.
 4.Configure Storage:
    - Default settings are usually fine (8 GiB).
    - Click "Next: Add Tags."
+   
    ![alt text](image-4.png)
 
 5.Add Tags (Optional):
    - Add any tags for organization, e.g., Key: `Name`, Value: `FlaskAppInstance`.
    - Click "Next: Configure Security Group."
+   
    ![alt text](image-5.png)
 
 6.Configure Security Group:
@@ -29,6 +32,7 @@ Log in to the AWS Management Console and navigate to the EC2 dashboard.
      - Type: 'HTTP', Protocol: 'TCP', Port Range: '80', Source: 'Anywhere' (for web access).
      - Type: 'Custom TCP', Protocol: 'TCP', Port Range: '5000', Source: 'Anywhere' (for Flask app access).
    - Click "Review and Launch."
+   
    ![alt text](image-6.png)
 
 7.Review and Launch:
@@ -63,7 +67,9 @@ Step 4: Develop the Flask Application
    
 
 2.Create the Flask App:
+
    - Create a file named `app.py`:
+   ```
    
    from flask import Flask
    from datetime import datetime
@@ -71,9 +77,9 @@ Step 4: Develop the Flask Application
    app = Flask(__name__)
 
    @app.route('/')
-   def home():
-       current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-       return f"<h1>Current Server Time</h1><p>{current_time}</p>"
+   def home():       
+   current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    return f"<h1>Current Server Time</h1><p>{current_time}</p>"
 
    if __name__ == '__main__':
        app.run(host='0.0.0.0', port=5000)
@@ -88,7 +94,8 @@ Step 5: Run the Application
 2.Access Your Application:
    - Open a web browser and navigate to `http://your-instance-public-dns:5000`.
    - You should see the current server time displayed.
-   ![vpc](../images/Screenshot%202024-11-18%20191148.png)
+   
+   ![vpc](../images/flaskappss.png)
 
 Step 6: Create a Custom AMI
 
@@ -105,12 +112,4 @@ Step 6: Create a Custom AMI
 
 3.Launch New Instances from Your AMI:
    - You can now launch new EC2 instances using this custom AMI, which includes your pre-configured Flask application.
-   ![vpc](../images)
-
-Step 7: Cleanup
-
-1. **Terminate the EC2 Instance:**
-   - After verifying everything, make sure to terminate your instance to avoid charges.
-
-2. **Delete the AMI (if necessary):**
-   - Go to the AMIs section in the EC2 console and delete the AMI if you no longer need it.
+   
