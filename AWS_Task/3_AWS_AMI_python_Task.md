@@ -113,3 +113,4 @@ Step 6: Create a Custom AMI
 3.Launch New Instances from Your AMI:
    - You can now launch new EC2 instances using this custom AMI, which includes your pre-configured Flask application.
    
+
